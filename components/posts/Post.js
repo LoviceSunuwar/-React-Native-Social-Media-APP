@@ -6,17 +6,6 @@ import VideoPlayer from 'react-native-video-controls';
 const Post = (props) => {
   const { post, toggleLike, toggleFollow, onItemClicked, isFollowHidden } = props;
 
-  const onHeartClicked = () => {
-    toggleLike(post);
-  };
-
-  const onFollowClicked = () => {
-    toggleFollow(post);
-  };
-
-  const clickItem = () => {
-    onItemClicked(post);
-  };
 
   const renderPostContent = () => {
     if (post.postCategory === 1) {
