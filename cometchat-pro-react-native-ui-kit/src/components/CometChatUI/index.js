@@ -25,9 +25,9 @@ function CometChatUI() {
   const checkRestrictions = async () => {
     let isChatEnabled = await contextRef.current.state.FeatureRestriction.isRecentChatListEnabled();
     let isGroupListEnabled = await contextRef.current.state.FeatureRestriction.isGroupListEnabled();
-    let isUserSettingsEnabled = await contextRef.current.state.FeatureRestriction.isUserSettingsEnabled();
-    let isUserListEnabled = await contextRef.current.state.FeatureRestriction.isUserListEnabled();
-    let isCallListEnabled = await contextRef.current.state.FeatureRestriction.isCallListEnabled();
+    // let isUserSettingsEnabled = await contextRef.current.state.FeatureRestriction.isUserSettingsEnabled();
+    // let isUserListEnabled = await contextRef.current.state.FeatureRestriction.isUserListEnabled();
+    // let isCallListEnabled = await contextRef.current.state.FeatureRestriction.isCallListEnabled();
     setTabs({
       isChatEnabled,
       isGroupListEnabled,
