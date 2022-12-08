@@ -57,6 +57,7 @@ const Post = (props) => {
   }
 
   return (
+    // click action for post
     <TouchableOpacity style={styles.listItem} onPress={clickItem}>
       <View style={styles.listItemHeader}>
         <View style={styles.listItemAuthorAvatarContainer}>
@@ -74,6 +75,7 @@ const Post = (props) => {
       <View style={styles.listItemFooter}>
         <TouchableOpacity onPress={onHeartClicked}>
           <Image style={[styles.listItemFooterImage, styles.gap]} source={post.hasLiked ? require('../../images/heart-active.png') : require('../../images/heart.png')} />
+          <Text>Image Property</Text>
         </TouchableOpacity>
         <Image style={[styles.listItemFooterImage, styles.gap2]} source={require('../../images/comment.png')} />
         <Image style={styles.listItemFooterImage} source={require('../../images/share.png')} />

@@ -44,6 +44,7 @@ const Posts = (props) => {
       return null;
     }
     const ref = databaseRef(database);
+    // getting values form database
     const snapshot = await databaseGet(databaseChild(ref, `users/${id}`));
     if (!snapshot || !snapshot.exists()) {
       return null
@@ -65,7 +66,7 @@ const Posts = (props) => {
     if (!author || !user) {
       return false;
     }
-    if (!author.followers || !author.followers.length) {
+    if ((!author.followers) || (!author.followers.length)) {
       return false;
     }
     return author.followers.includes(user.id);
