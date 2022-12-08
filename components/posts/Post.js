@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native';
+import { View, Image, TextInput, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native';
 import Video from 'react-native-video';
 import VideoPlayer from 'react-native-video-controls';
 
@@ -23,6 +23,7 @@ const Post = (props) => {
       return (
         <View style={styles.listItemBody}>
           <Image style={styles.listItemImage} source={{ uri: post.content }} />
+
         </View>
       );
     }
@@ -53,6 +54,7 @@ const Post = (props) => {
         );
       }
     }
+
     return <></>;
   }
 
@@ -78,6 +80,44 @@ const Post = (props) => {
         <Image style={[styles.listItemFooterImage, styles.gap2]} source={require('../../images/comment.png')} />
         <Image style={styles.listItemFooterImage} source={require('../../images/share.png')} />
       </View>
+      <View style={{ paddingHorizontal: 15 }}>
+        <Text>
+          Liked by {post.nLikes ? 'you and' : ''}{' '}
+          {post.nLikes ? post.nLikes + 1 : post.nLikes} others
+        </Text>
+        <Text
+          style={{
+            fontWeight: '700',
+            fontSize: 14,
+            paddingVertical: 2,
+          }}>
+          {post.postDesc}
+        </Text>
+        <Text style={{opacity: 0.4, paddingVertical: 2}}>
+                View all comments
+        </Text>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                  {/* <Image
+                    source={{ uri: post.author.avatar }}
+                    style={{
+                      width: 25,
+                      height: 25,
+                      borderRadius: 100,
+                      backgroundColor: 'orange',
+                      marginRight: 10,
+                    }}
+                  /> */}
+                  <TextInput
+                    placeholder="Add a comment "
+                    style={{opacity: 0.5}}
+                  />
+                </View>
+               
+                 
+                
+                
+      </View>
+
     </TouchableOpacity>
   );
 };

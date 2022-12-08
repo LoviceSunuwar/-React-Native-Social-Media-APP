@@ -1,20 +1,26 @@
 import React, { useState, useContext } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image, ActivityIndicator, Alert, Platform } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Image, ActivityIndicator, Alert, Platform, ScrollView } from 'react-native';
 import { launchImageLibrary } from 'react-native-image-picker';
 import Video from 'react-native-video';
 import VideoPlayer from 'react-native-video-controls';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from "uuid";
 import Context from '../../context';
+import validator from "validator";
 import { storage, storageRef, uploadBytesResumable, getDownloadURL, database, databaseRef, databaseSet } from "../../firebase";
 
 const Create = (props) => {
   const { navigation } = props;
 
   const [post, setPost] = useState(null);
+  const [postDesc, setPostDesc] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const { user, setUser, setHasNewPost } = useContext(Context);
+  const onPostDescChanged = (postDesc) => {
+    console.log(postDesc);
+     setPostDesc(() => postDesc);
+   };
 
   const showMessage = (title, message) => {
     Alert.alert(
@@ -45,17 +51,33 @@ const Create = (props) => {
       }
     });
   };
+  const isEverythingValid= ({postDesc}) =>{
+    // console.log('no Desc', postDesc);
+     if (validator.isEmpty( postDesc )) {
+       console.log('nO Desc', postDesc);
+       showMessage('Error', 'Please input the Description');
+       return false;
+     }
+     return true;
+   }
 
   const buildPost = ({ id, content }) => {
-    return { id, content, likes: [], nLikes: 0, postCategory: post.type.includes('image') ? 1 : 2, author: { id: user.id, fullname: user.fullname, avatar: user.avatar } }
+    return { id, content, likes: [], nLikes: 0, postCategory: post.type.includes('image') ? 1 : 2, author: { id: user.id, fullname: user.fullname, avatar: user.avatar }, postDesc }
   }
 
+  
+   
   const createPost = async () => {
+
     if (!post) {
       showMessage('Error', 'Please upload your post image or video');
       return;
     }
-    setIsLoading(true);
+    console.log('hya samma xa');
+    if (isEverythingValid({postDesc})){
+      
+    
+      setIsLoading(true);
     const storageImageRef = storageRef(storage, `posts/${post.name}`);
     const localFile = await fetch(post.uri);
     const fileBlob = await localFile.blob();
@@ -69,10 +91,11 @@ const Create = (props) => {
         showMessage('Error', 'Failure to create your post, please try again');
       },
       async () => {
+        console.log('hamro desc', postDesc);
         const downloadUrl = await getDownloadURL(uploadTask.snapshot.ref);
         if (downloadUrl) {
           const uuid = uuidv4();
-          const createdPost = buildPost({ id: uuid, content: downloadUrl });
+          const createdPost = buildPost({ id: uuid, content: downloadUrl, postDesc: postDesc });
           databaseSet(databaseRef(database, 'posts/' + uuid), createdPost);
           user.nPosts = user.nPosts ? user.nPosts + 1 : 1;
           databaseSet(databaseRef(database, 'users/' + user.id), user);
@@ -85,6 +108,8 @@ const Create = (props) => {
         }
       }
     );
+    }
+    
   };
 
   const renderUploadedContent = () => {
@@ -139,10 +164,31 @@ const Create = (props) => {
       </View>
     );
   }
+  
+  const takeDesc = () => {
+    return(
+      <View style={styles.descContainer}>
+        <ScrollView>
+        <Text
+            style={styles.desc}>
+            Short Description
+          </Text>
+          <TextInput
+            placeholder="Description"
+            onChangeText={onPostDescChanged}
+            // defaultValue="{name}"
+            style={styles.descText}
+          />
+        </ScrollView>
+        
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
       {renderUploadedContent()}
+      {takeDesc()}
       <TouchableOpacity style={styles.uploadBtn} onPress={createPost}>
         <Text style={styles.uploadTxt}>Create Post</Text>
       </TouchableOpacity>
@@ -157,11 +203,35 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  desc:{
+    opacity: 0.9,
+    left: 0,
+    right:0,
+    width: 100,
+    display: 'flex'
+  },
+  descContainer:{
+    marginTop:60,
+    width:100,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  
+  },
+  descText:{
+    fontSize: 16,
+    borderBottomWidth: 1,
+    borderColor: '#CDCDCD',
+    resizeMode: 'contain',
+    right:0
+  },
   uploadContainer: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    height:30
   },
   uploadImageIcon: {
     width: 96,
@@ -174,6 +244,7 @@ const styles = StyleSheet.create({
   },
   postContainer: {
     flex: 1,
+    height: 30,
   },
   postContent: {
     flex: 1,

@@ -116,7 +116,8 @@ const Login = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.logoContainer}>
-        <Image source={require('../../images/logo.png')} />
+        <Text style = {{fontWeight: "bold", fontSize: 40}}>ILLUSTRIFY</Text>
+        {/* <Image source={require('../../images/logo.png')} /> */}
       </View>
       <TextInput
         autoCapitalize='none'
@@ -153,7 +154,8 @@ const styles = StyleSheet.create({
   logoContainer: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginVertical: 20
   },
   input: {
     borderColor: '#ccc',

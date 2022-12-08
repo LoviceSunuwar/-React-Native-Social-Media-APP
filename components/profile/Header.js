@@ -14,8 +14,18 @@ const Header = (props) => {
 
   return (
     <View style={styles.headerContainer}>
+      
       <View style={styles.headerImageContainer}>
         <Image style={styles.headerImage} source={{ uri: profile.avatar }} />
+        <Text
+            style={{
+              marginTop: 26,
+              paddingVertical: 5,
+              fontWeight: 'bold',
+              textTransform: 'capitalize'
+            }}>
+            {profile.fullname}
+          </Text>
       </View>
       <View style={styles.headerRight}>
         <View style={styles.headerInfoContainer}>
@@ -56,7 +66,7 @@ const styles = StyleSheet.create({
   },
   headerImage: {
     width: 86,
-    height: 86,
+    height: 80,
     borderRadius: 86 / 2
   },
   headerRight: {
@@ -69,10 +79,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12
   },
   headerNumberOfPostsContainer: {
+    marginTop: 20,
     flex: 1,
     alignItems: 'center'
   },
   headerNumberOfFollowersContainer: {
+    marginTop: 20,
     flex: 1,
     alignItems: 'center'
   },
@@ -80,7 +92,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   headerLabel: {
-    fontSize: 16,
+    fontSize: 18,
   },
   headerLabelBold: {
     fontWeight: 'bold'

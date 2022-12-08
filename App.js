@@ -123,7 +123,8 @@ const App = () => {
             <Stack.Screen name="Home" component={Tabs} options={({ navigation }) => ({
               headerTitle: () => (
                 <View>
-                  <Image source={require('./images/logo.png')} style={[styles.logo, Platform.OS === 'android' ? styles.logoMargin : null]} />
+                  <Text style = {{fontWeight: 'bold'}}>ILLUSTRIFY</Text>
+                  {/* <Image source={require('./images/logo.png')} style={[styles.logo, Platform.OS === 'android' ? styles.logoMargin : null]} /> */}
                 </View>
               ),
               headerLeft: () => {

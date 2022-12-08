@@ -140,7 +140,7 @@ const Posts = (props) => {
     }
     const likes = updateLikes(post);
     const nLikes = likes.length;
-    const updatedPost = { id: post.id, content: post.content, author: { ...post.author }, likes, nLikes, postCategory: post.postCategory };
+    const updatedPost = { id: post.id, content: post.content, author: { ...post.author }, likes, nLikes, postCategory: post.postCategory, postDesc: post.postDesc };
     databaseSet(databaseRef(database, 'posts/' + updatedPost.id), updatedPost);
     if (!post.hasLiked && post.author.id !== user.id) { 
       const notificationId = uuidv4();
