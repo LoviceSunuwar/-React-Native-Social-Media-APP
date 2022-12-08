@@ -55,24 +55,24 @@ const styles = StyleSheet.create({
   imageContainer: { 
     flex: 1,
   },
-  image: { 
+  image: {  // Image resolution
     bottom: 0,
     left: 0,
     position: 'absolute',
     right: 0,
     top: 0,
   },
-  videoContainer: {
+  videoContainer: {  //video dispaly
     bottom: 0,
     left: 0,
-    position: 'absolute',
+    position: 'absolute',  // absolute position
     right: 0,
     top: 0,
   },
-  videoElement: {
+  videoElement: {  
     flex: 1
   },
-  videoOverlay: {
+  videoOverlay: {  //video overlaying
     bottom: 0,
     left: 0,
     position: 'absolute',
