@@ -66,7 +66,7 @@ const Posts = (props) => {
     if (!author || !user) {
       return false;
     }
-    if ((!author.followers) || (!author.followers.length)) {
+    if (!author.followers || !author.followers.length) {
       return false;
     }
     return author.followers.includes(user.id);
