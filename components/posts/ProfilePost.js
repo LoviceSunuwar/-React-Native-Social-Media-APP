@@ -36,8 +36,8 @@ const ProfilePost = (props) => {
         </View>
       );
     }
-    return (
-      <View style={styles.videoContainer}>
+    return ( 
+      <View style={styles.videoContainer}> 
         <VideoPlayer
           autoplay
           repeat
