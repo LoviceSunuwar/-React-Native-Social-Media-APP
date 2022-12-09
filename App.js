@@ -56,7 +56,12 @@ const App = () => {
     setUser(() => authenticatedUser ? JSON.parse(authenticatedUser) : null);
   };
 
- 
+  const showMessage = (title, message) => {
+    Alert.alert(
+      title,
+      message
+    );
+  };
 
   const listenCustomMessages = () => {
     CometChat.addMessageListener(
