@@ -22,6 +22,7 @@ const ProfilePost = (props) => {
       </TouchableOpacity> 
     );
   }
+  //category post
   if (post.postCategory && post.postCategory === 2) {
     if (Platform.OS === 'ios') {
       return (
