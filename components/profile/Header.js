@@ -9,7 +9,7 @@ const Header = (props) => {
   };
 
   if (!profile) {
-    return <></>;
+    return ;
   }
 
   return (
@@ -22,6 +22,10 @@ const Header = (props) => {
           <View style={styles.headerNumberOfPostsContainer}>
             <Text style={[styles.headerLabel, styles.headerLabelBold]}>{profile.nPosts ? profile.nPosts : 0}</Text>
             <Text style={styles.headerLabel}>Posts</Text>
+          </View>
+          <View style={styles.headerNumberOfFollowersContainer}>
+            <Text style={[styles.headerLabel, styles.headerLabelBold]}>{profile.nFollowers ? profile.nFollowers : 0}</Text>
+            <Text style={styles.headerLabel}>Followers</Text>
           </View>
           <View style={styles.headerNumberOfFollowersContainer}>
             <Text style={[styles.headerLabel, styles.headerLabelBold]}>{profile.nFollowers ? profile.nFollowers : 0}</Text>
