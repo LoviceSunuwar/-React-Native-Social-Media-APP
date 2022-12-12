@@ -3,7 +3,6 @@ import { View, Image, Text, StyleSheet, TouchableOpacity, Platform } from 'react
 import Video from 'react-native-video';
 import VideoPlayer from 'react-native-video-controls';
 
-//post content
 const Post = (props) => {
   const { post, toggleLike, toggleFollow, onItemClicked, isFollowHidden } = props;
 

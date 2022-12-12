@@ -57,5 +57,17 @@
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "description": "Read the full tutorial here: [**>>  How to build an Instagram Clone with React Native**](https://www.cometchat.com/tutorials/#)",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LoviceSunuwar/Capstone_MADT_TeamFortress.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LoviceSunuwar/Capstone_MADT_TeamFortress/issues"
+  },
+  "homepage": "https://github.com/LoviceSunuwar/Capstone_MADT_TeamFortress#readme"
 }
