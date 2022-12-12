@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../home/Home';
 import Notifications from '../notification/Notifications';
 import Profile from '../profile/Profile';
+import AuctionHome from '../home/AuctionHome';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,7 +15,12 @@ const Tabs = () => {
         if (route.name === 'Feed') {
           const homeIcon = focused ? require('../../images/home-active.png') : require('../../images/home.png');
           return <Image style={styles.tabBarIconStyle} source={homeIcon} />
-        } else if (route.name === 'Notifications') {
+        } 
+        else if (route.name === 'Auciton') {
+          const auctionIcon = focused ? require('../../images/auction.png') : require('../../images/auction.png');
+          return <Image style={styles.tabBarIconStyle} source={auctionIcon} />
+        }
+        else if (route.name === 'Notifications') {
           const notificationIcon = focused ? require('../../images/bell-active.png') : require('../../images/bell.png');
           return <Image style={styles.tabBarIconStyle} source={notificationIcon} />
         } else if (route.name === 'Profile') {
@@ -32,6 +38,7 @@ const Tabs = () => {
       <Tab.Screen name="Feed" component={Home} />
       <Tab.Screen name="Notifications" component={Notifications} />
       <Tab.Screen name="Profile" component={Profile} />
+      <Tab.Screen name="Auction" component={AuctionHome} />
     </Tab.Navigator>
   );
 };
