@@ -37,7 +37,7 @@ const Tabs = () => {
 };
 
 const styles = StyleSheet.create({
-  tabBarIconStyle: {
+  tabBarIconStyle: { 
     width: 24,
     height: 24
   },  
