@@ -11,6 +11,7 @@ import Tabs from './components/navigation/Tabs';
 import Create from './components/create/Create';
 import Detail from './components/posts/Detail';
 import Chat from './components/chat/Chat';
+import CreateAuction from './components/create/CreateAuction';
 
 import Context from './context';
 
@@ -111,6 +112,11 @@ const App = () => {
     navigation.navigate('Create');
   };
 
+  const createAuction = (navigation) => () => {
+    navigation.navigate('CreateAuction');
+  };
+
+
   const chat = (navigation) => () => {
     navigation.navigate('Chat');
   };
@@ -137,6 +143,12 @@ const App = () => {
                           source={require('./images/plus.png')}
                         />
                       </TouchableOpacity>
+                      <TouchableOpacity onPress={createAuction(navigation)}>
+                        <Image
+                          style={{ width: 24, height: 24, marginRight: 8 }}
+                          source={require('./images/auction.png')}
+                        />
+                      </TouchableOpacity>
                     </View>
                   );
                   return <></>;
@@ -151,6 +163,12 @@ const App = () => {
                         source={require('./images/plus.png')}
                       />
                     </TouchableOpacity>
+                    <TouchableOpacity onPress={createAuction(navigation)}>
+                        <Image
+                          style={{ width: 24, height: 24, marginRight: 20 }}
+                          source={require('./images/auction.png')}
+                        />
+                      </TouchableOpacity>
                   </View> : <></>}
                   <TouchableOpacity onPress={chat(navigation)}>
                     <Image
@@ -171,6 +189,13 @@ const App = () => {
               headerTitle: () => (
                 <View>
                   <Text style={styles.createPostTitle}>Create a post</Text>
+                </View>
+              )
+            })} />
+            <Stack.Screen name="CreateAuction" component={CreateAuction} options={({ navigation }) => ({
+              headerTitle: () => (
+                <View>
+                  <Text style={styles.createAuctionTitle}>Create a Auction</Text>
                 </View>
               )
             })} />
@@ -209,6 +234,10 @@ const styles = StyleSheet.create({
     marginTop: 8
   },
   createPostTitle: {
+    fontSize: 18,
+    fontWeight: 'bold'
+  },
+  createAuctionTitle: {
     fontSize: 18,
     fontWeight: 'bold'
   }

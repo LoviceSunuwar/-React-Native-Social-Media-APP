@@ -22,7 +22,7 @@ const Auction = (props) => {
     if (auction.auctionCategory === 1) {
       return (
         <View style={styles.listItemBody}>
-          <Image style={styles.listItemImage} source={{ uri: vauction.content }} />
+          <Image style={styles.listItemImage} source={{ uri: auction.content }} />
 
         </View>
       );
@@ -75,10 +75,10 @@ const Auction = (props) => {
       {renderAuctionContent()}
       <View style={styles.listItemFooter}>
         <TouchableOpacity onPress={onHeartClicked}>
-          <Image style={[styles.listItemFooterImage, styles.gap]} source={auction.hasLiked ? require('../../images/heart-active.png') : require('../../images/heart.png')} />
+          <Image style={[styles.listItemFooterImage, styles.gap]} source={auction.hasLiked ? require('../../images/auction.png') : require('../../images/heart.png')} />
         </TouchableOpacity>
-        <Image style={[styles.listItemFooterImage, styles.gap2]} source={require('../../images/comment.png')} />
-        <Image style={styles.listItemFooterImage} source={require('../../images/share.png')} />
+        {/* <Image style={[styles.listItemFooterImage, styles.gap2]} source={require('../../images/comment.png')} />
+        <Image style={styles.listItemFooterImage} source={require('../../images/share.png')} /> */}
       </View>
       <View style={{ paddingHorizontal: 15 }}>
         <Text>

@@ -75,7 +75,7 @@ const Auctions = (props) => {
       return [];
     }
     const transformedAuctions = [];
-    for (const Auction of auctions) {
+    for (const auction of auctions) {
       if ((authorId && auction.author.id !== authorId) || (auctionCategory && auction.auctionCategory !== auctionCategory)) {
         continue;
       }
