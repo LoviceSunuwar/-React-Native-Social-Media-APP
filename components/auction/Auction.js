@@ -59,7 +59,8 @@ const Auction = (props) => {
   }
 
   return (
-    <TouchableOpacity style={styles.listItem} onPress={clickItem}>
+    <View >
+{/* <TouchableOpacity style={styles.listItem} onPress={clickItem}> */}
       <View style={styles.listItemHeader}>
         <View style={styles.listItemAuthorAvatarContainer}>
           <Image style={styles.listItemAuthorAvatar} source={{ uri: auction.author.avatar }} />
@@ -81,10 +82,10 @@ const Auction = (props) => {
         <Image style={styles.listItemFooterImage} source={require('../../images/share.png')} /> */}
       </View>
       <View style={{ paddingHorizontal: 15 }}>
-        <Text>
+        {/* <Text>
           Liked by {auction.nLikes ? 'you and' : ''}{' '}
           {auction.nLikes ? auction.nLikes + 1 : auction.nLikes} others
-        </Text>
+        </Text> */}
         <Text
           style={{
             fontWeight: '700',
@@ -93,9 +94,9 @@ const Auction = (props) => {
           }}>
           {auction.auctionDesc}
         </Text>
-        <Text style={{opacity: 0.4, paddingVertical: 2}}>
+        {/* <Text style={{opacity: 0.4, paddingVertical: 2}}>
                 View all comments
-        </Text>
+        </Text> */}
         <View style={{flexDirection: 'row', alignItems: 'center'}}>
                   {/* <Image
                     source={{ uri: auction.author.avatar }}
@@ -107,10 +108,10 @@ const Auction = (props) => {
                       marginRight: 10,
                     }}
                   /> */}
-                  <TextInput
+                  {/* <TextInput
                     placeholder="Add a comment "
                     style={{opacity: 0.5}}
-                  />
+                  /> */}
                 </View>
                
                  
@@ -118,7 +119,9 @@ const Auction = (props) => {
                 
       </View>
 
-    </TouchableOpacity>
+    {/* </TouchableOpacity> */}
+    </View>
+    
   );
 };
 
@@ -127,7 +130,8 @@ const styles = StyleSheet.create({
   listItemHeader: {
     alignItems: 'center',
     flexDirection: 'row',
-    padding: 8
+    padding: 8,
+    marginBottom: 10
   },
   listItemAuthorAvatarContainer: {
     alignItems: 'center',

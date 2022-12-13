@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, TextInput, Text, StyleSheet, TouchableOpacity, Platform } from 'react-native';
+import { View, Image, TextInput, Text, StyleSheet, TouchableOpacity, Platform, DatePickerAndroid } from 'react-native';
 import Video from 'react-native-video';
 import VideoPlayer from 'react-native-video-controls';
 
@@ -59,7 +59,8 @@ const Post = (props) => {
   }
 
   return (
-    <TouchableOpacity style={styles.listItem} onPress={clickItem}>
+    <View>
+       {/* <TouchableOpacity style={styles.listItem} onPress={clickItem}> */}
       <View style={styles.listItemHeader}>
         <View style={styles.listItemAuthorAvatarContainer}>
           <Image style={styles.listItemAuthorAvatar} source={{ uri: post.author.avatar }} />
@@ -79,6 +80,10 @@ const Post = (props) => {
         </TouchableOpacity>
         <Image style={[styles.listItemFooterImage, styles.gap2]} source={require('../../images/comment.png')} />
         <Image style={styles.listItemFooterImage} source={require('../../images/share.png')} />
+        <TouchableOpacity style={styles.listItem} onPress={clickItem}>
+          <Text style={styles.buyText}>Buy Now</Text>
+        </TouchableOpacity>
+        
       </View>
       <View style={{ paddingHorizontal: 15 }}>
         <Text>
@@ -118,7 +123,9 @@ const Post = (props) => {
                 
       </View>
 
-    </TouchableOpacity>
+    {/* </TouchableOpacity> */}
+    </View>
+   
   );
 };
 
@@ -185,14 +192,30 @@ const styles = StyleSheet.create({
   listItemFooter: {
     padding: 8,
     paddingLeft: 16,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    flex:4
   },
   listItemFooterImage: {
     width: 28,
     height: 28
   },
   gap: {
-    marginRight: 12
+    marginRight: 12,
+    alignSelf: 'flex-end',
+  },
+  buyText:{
+    marginLeft:220,
+    padding:3,
+    backgroundColor: "gray",
+    color: 'white',
+    // width: 260,
+    // right:0,
+    textAlign:'right',
+    alignSelf: 'flex-end',
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius:10,
+
   },
   gap2: {
     marginRight: 8
