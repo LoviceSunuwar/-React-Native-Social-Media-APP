@@ -191,6 +191,7 @@ const styles = StyleSheet.create({
     width: 28,
     height: 28
   },
+
   gap: {
     marginRight: 12
   },
