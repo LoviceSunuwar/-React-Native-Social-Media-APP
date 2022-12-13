@@ -43,8 +43,8 @@ const Login = (props) => {
       message
     );
   };
-
-  const getUser = async (id) => {
+     
+  const getUser = async (id) => { 
     if (!id) {
       return null;
     }
@@ -68,7 +68,7 @@ const Login = (props) => {
           AsyncStorage.setItem('auth', JSON.stringify(authenticatedUser));
           setUser(authenticatedUser);
           navigation.navigate('Home');
-        } else {
+        } else { 
           setIsLoading(false);
           showMessage('Info', 'Cannot load the authenticated information, please try again');
         }
@@ -82,9 +82,9 @@ const Login = (props) => {
     }
   };
 
-  const login = async () => {
+  const login = async () => { 
     if (isUserCredentialsValid(email, password)) {
-      setIsLoading(true);
+      setIsLoading(true); 
       try {
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
         if (userCredential) {
@@ -92,7 +92,7 @@ const Login = (props) => {
           await loginCometChat(userId);
         }
       } catch (error) {
-        setIsLoading(false);
+        setIsLoading(false); 
         showMessage('Error', 'Your username or password is not correct');
       }
     } else {
