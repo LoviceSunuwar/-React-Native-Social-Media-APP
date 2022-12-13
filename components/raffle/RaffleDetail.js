@@ -3,25 +3,25 @@ import { View, Image, StyleSheet, Platform } from 'react-native';
 import Video from 'react-native-video';
 import VideoPlayer from 'react-native-video-controls';
 
-const AuctionDetail = (props) => { 
+const RaffleDetail = (props) => { 
   const { route } = props;
-  const { auction } = route.params;
+  const { raffle } = route.params;
 
-  console.log('selected auction: ');
-  console.log(auction);
+  console.log('selected raffle: ');
+  console.log(raffle);
 
-  if (!route || !auction || !auction.content) {
+  if (!route || !raffle || !raffle.content) {
     return <></>;
   }
 
-  if (auction.auctionCategory && auction.auctionCategory === 1) {
+  if (raffle.raffleCategory && raffle.raffleCategory === 1) {
     return (
       <View style={styles.imageContainer}>
-        <Image style={styles.image} source={{ uri: auction.content }} />
+        <Image style={styles.image} source={{ uri: raffle.content }} />
       </View>
     );
   } 
-  if (auction.auctionCategory && auction.auctionCategory === 2) { 
+  if (raffle.raffleCategory && raffle.raffleCategory === 2) { 
     if (Platform.OS === 'ios') {
       return (
         <View style={styles.videoContainer}>
@@ -29,7 +29,7 @@ const AuctionDetail = (props) => {
             style={styles.videoElement}
             shouldPlay
             muted={true}
-            source={{ uri: auction.content }}
+            source={{ uri: raffle.content }}
             allowsExternalPlayback={false} />
         </View>
       );
@@ -41,7 +41,7 @@ const AuctionDetail = (props) => {
           repeat
           showOnStart={false}
           style={styles.videoElement}
-          source={{ uri: auction.content }}
+          source={{ uri: raffle.content }}
         />
         <View style={styles.videoOverlay} />
       </View>
@@ -82,4 +82,4 @@ const styles = StyleSheet.create({
   },  
 });
 
-export default AuctionDetail;
+export default RaffleDetail;;
