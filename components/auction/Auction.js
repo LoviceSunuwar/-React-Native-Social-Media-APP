@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginRight: 12
-  ,
+  },
   listItemDot: {
     backgroundColor: '#000',
     borderRadius: 4 / 2,
