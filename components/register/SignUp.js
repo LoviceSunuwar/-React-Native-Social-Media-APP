@@ -23,8 +23,10 @@ const SignUp = () => {
   };
 
   const onEmailChanged = (email) => {
-    setEmail(() => email);
-  };
+    setEmail(() => email); 
+
+    
+  }; 
 
   const onPasswordChanged = (password) => {
     setPassword(() => password);
@@ -40,7 +42,9 @@ const SignUp = () => {
       message
     );
   };
+  
 
+  //signup validation
   const isSignupValid = ({ fullname, email, password, confirmPassword }) => {
     if (!userAvatar) { 
       showMessage('Error', 'Please upload your avatar');

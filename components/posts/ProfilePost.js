@@ -7,22 +7,19 @@ const ProfilePost = (props) => {
   const { post, onItemClicked } = props;
 
   if (!post) {
-    return <></>;
+    return <></>; 
   }
 
-  // onclick data item fetching 
   const clickItem = () => {
     onItemClicked(post);
   };
- // image post and video displaying
   if (post.postCategory && post.postCategory === 1) {
     return (
       <TouchableOpacity style={styles.imagePostContainer} onPress={clickItem}>
         <Image style={styles.imagePost} source={{ uri: post.content }} />
       </TouchableOpacity> 
-    );
+    ); 
   }
-  //category post
   if (post.postCategory && post.postCategory === 2) {
     if (Platform.OS === 'ios') {
       return (
