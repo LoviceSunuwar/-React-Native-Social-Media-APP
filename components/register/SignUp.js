@@ -44,7 +44,6 @@ const SignUp = () => {
   };
   
 
-  //signup validation
   const isSignupValid = ({ fullname, email, password, confirmPassword }) => {
     if (!userAvatar) { 
       showMessage('Error', 'Please upload your avatar');
@@ -128,27 +127,28 @@ const SignUp = () => {
   };
 
   const selectAvatar = () => {
-    const options = {
-      mediaType: 'photo'
-    };
-    launchImageLibrary(options, async (response) => {
-      if (response.didCancel) {
-        return null;
-      } else if (response.assets && response.assets.length) {
-        const uri = response.assets[0].uri;
-        const fileName = response.assets[0].fileName;
-        const type = response.assets[0].type;
-        if (uri && fileName) {
-          const file = {
-            name: fileName,
-            uri: Platform.OS === 'android' ? uri : uri.replace('file://', ''),
-            type: type || 'video/quicktime'
-          };
-          setUserAvatar(() => file);
-        }
-      }
-    });
+  //fetching user image
+  const options = {
+    mediaType: 'photo'
   };
+  launchImageLibrary(options, async (response) => {
+    if (response.didCancel) {
+      return null;
+    } else if (response.assets && response.assets.length) {
+      const uri = response.assets[0].uri;
+      const fileName = response.assets[0].fileName;
+      const type = response.assets[0].type;
+      if (uri && fileName) {
+        const file = {
+          name: fileName,
+          uri: Platform.OS === 'android' ? uri : uri.replace('file://', ''),
+          type: type || 'video/quicktime'
+        };
+        setUserAvatar(() => file);
+      }
+    }
+  });
+};
 
   if (isLoading) {
     return (
